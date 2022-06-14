@@ -32,6 +32,7 @@ tokens = (
 
     # Symbolos
     'HASH',
+    'ID',
     'POINT',
     'PLUS',
     'PLUSPLUS',
@@ -64,7 +65,6 @@ tokens = (
     'CATCH',
     'FINALLY',
     'TYPEOF',
-    'VOID',
     'DEFAULT',
     'JSON',
     'MATH',
@@ -116,10 +116,13 @@ def t_LET(t):
     r'let'
     return t
 
-def t_var(t):
+def t_VAR(t):
     r'var'
     return t
 
+def t_VOID(t):
+    r'void'
+    return t
 
 def t_CONSOLE(t):
     r'console'
@@ -145,10 +148,6 @@ def t_FALSE(t):
     r'false'
     return t
 
-def t_VOID(t):
-    r'void'
-    return t
-
 def t_DEFAULT(t):
     r'default'
     return t
@@ -157,8 +156,6 @@ def t_DEFAULT(t):
 def t_NEW(t):
     r'new'
     return t
-
-
 
 def t_OBJECT(t):
     r'object'
@@ -176,7 +173,6 @@ def t_THIS(t):
     r'this'
     return t
 
-
 def t_THROW(t):
     r'throw'
     return t
@@ -189,7 +185,6 @@ def t_INSTANCEOF(t):
     r'instanceof'
     return t
 
-
 def t_MATH(t):
     r'MATH'
     return t
@@ -198,29 +193,20 @@ def t_JSON(t):
     r'JSON'
     return t
 
-
 def t_ENDL(t):
     r'endl'
     return t
-
 
 def t_ELSE(t):
     r'else'
     return t
 
-
 def t_IF(t):
     r'if'
     return t
 
-
 def t_RETURN(t):
     r'return'
-    return t
-
-
-def t_VOID(t):
-    r'void'
     return t
 
 
@@ -343,7 +329,7 @@ if __name__ == '__main__':
     #la variable data para despues enviarla al analizador lexico para que la
     #descomponga en tokes
 
-    f = open('fuente/c.cpp')
+    f = open('fuente/filee.js')
     data = f.read()
     f.close()
     #Build lexer and try on

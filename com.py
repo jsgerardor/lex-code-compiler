@@ -6,7 +6,7 @@ import ply_build.armar as construir
 
 def menu():
     opcion = 0
-    while (opcion != 8):
+    while (opcion != 3):
         # os.system("clear")
         print('''MENU COMPILADOR
          \t1: Programa Fuente

@@ -7,17 +7,23 @@ import os
 tokens = (
 
     # Palabras Reservadas
-    'INCLUDE',
-    'USING',
-    'NAMESPACE',
-    'STD',
-    'COUT',
-    'CIN',
-    'GET',
-    'ENDL',
+    'FUNCTION',
+    'DOCUMENT',
+    'CONSOLE',
+    'LOG',
+    'BREAK',
+    'TRUE',
+    'FALSE',
+    'NEW',
+    'OBJECT',
+    'ARRAY',
+    'NULL',
+    'THIS',
+    'VAR',
+    'LET',
+    'CONST',
     'ELSE',
     'IF',
-    'INT',
     'STRING',
     'RETURN',
     'VOID',
@@ -54,7 +60,15 @@ tokens = (
 
 
     #Otros
-    'ID',
+    'TRHOW',
+    'CATCH',
+    'FINALLY',
+    'TYPEOF',
+    'VOID',
+    'DEFAULT',
+    'JSON',
+    'MATH',
+    'INSTANCEOF',
     'NUMBER',
 )
 
@@ -86,33 +100,102 @@ def t_INCLUDE(t):
     return t
 
 
-def t_USING(t):
-    r'using'
+def t_FUNCTION(t):
+    r'function'
+    return t
+
+def t_DOCUMENT(t):
+    r'document'
+    return t
+
+def t_CONST(t):
+    r'const'
+    return t
+
+def t_LET(t):
+    r'let'
+    return t
+
+def t_var(t):
+    r'var'
     return t
 
 
-def t_NAMESPACE(t):
-    r'namespace'
+def t_CONSOLE(t):
+    r'console'
+    return t
+
+def t_LOG(t):
+    r'log'
+    return t
+
+def t_NULL(t):
+    r'null'
+    return t
+
+def t_BREAK(t):
+    r'break'
+    return t
+
+def t_TRUE(t):
+    r'true'
+    return t
+
+def t_FALSE(t):
+    r'false'
+    return t
+
+def t_VOID(t):
+    r'void'
+    return t
+
+def t_DEFAULT(t):
+    r'default'
     return t
 
 
-def t_STD(t):
-    r'std'
+def t_NEW(t):
+    r'new'
     return t
 
 
-def t_COUT(t):
-    r'cout'
+
+def t_OBJECT(t):
+    r'object'
+    return t
+
+def t_TYPEOF(t):
+    r'typeof'
+    return t
+
+def t_ARRAY(t):
+    r'array'
+    return t
+
+def t_THIS(t):
+    r'this'
     return t
 
 
-def t_CIN(t):
-    r'cin'
+def t_THROW(t):
+    r'throw'
+    return t
+
+def t_CATCH(t):
+    r'catch'
+    return t
+
+def t_INSTANCEOF(t):
+    r'instanceof'
     return t
 
 
-def t_GET(t):
-    r'get'
+def t_MATH(t):
+    r'MATH'
+    return t
+
+def t_JSON(t):
+    r'JSON'
     return t
 
 
@@ -128,11 +211,6 @@ def t_ELSE(t):
 
 def t_IF(t):
     r'if'
-    return t
-
-
-def t_INT(t):
-    r'int'
     return t
 
 
@@ -174,10 +252,6 @@ def t_STRING(t):
     r'\"?(\w+ \ *\w*\d* \ *)\"?'
     return t
 
-
-def t_HASH(t):
-    r'\#'
-    return t
 
 
 def t_PLUSPLUS(t):
@@ -223,12 +297,12 @@ t_ignore = ' \t'
 
 
 def t_comments(t):
-    r'/\*(.|\n)*?\*/'
+    r'/\/\.*/'
     t.lexer.lineno += t.value.count('\n')
 
 
 def t_comments_C99(t):
-    r'//(.)*?\n'
+    r'\/[*](.|\n)*?[*]\/'
     t.lexer.lineno += 1
 
 

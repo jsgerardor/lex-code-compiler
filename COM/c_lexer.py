@@ -297,7 +297,9 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-
+##
+## TODO:test create file with open
+##
 def test(data, lexer):
     lexer.input(data)
     while True:

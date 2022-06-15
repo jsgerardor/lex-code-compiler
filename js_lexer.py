@@ -1,5 +1,3 @@
-# -*- encondig: utf-8 -*-
-
 import ply.lex as lex
 import os
 
@@ -73,7 +71,7 @@ tokens = (
 )
 
 
-# Reglas de Expresiones Regualres para token de Contexto simple
+# Reglas de Expresiones Regulares para tokens
 
 t_PLUS = r'\+'
 t_MINUS = r'-'
@@ -225,55 +223,41 @@ def t_NUMBER(t):
     t.value = int(t.value)
     return t
 
-#exprecion regular para reconocer los identificadores
-
-
 def t_ID(t):
     r'\w+(_\d\w)*'
     return t
 
-
 def t_STRING(t):
-#expresion RE para reconocer los String
     r'\"?(\w+ \ *\w*\d* \ *)\"?'
     return t
-
-
 
 def t_PLUSPLUS(t):
     r'\+\+'
     return t
 
-
 def t_LESSEQUAL(t):
     r'<='
     return t
-
 
 def t_GREATEREQUAL(t):
     r'>='
     return t
 
-
 def t_DEQUAL(t):
     r'=='
     return t
-
 
 def t_LGREATER(t):
     r'<<'
     return t
 
-
 def t_RGREATER(t):
     r'>>'
     return t
 
-
 def t_DISTINT(t):
     r'!='
     return t
-
 
 def t_newline(t):
     r'\n+'
@@ -281,25 +265,18 @@ def t_newline(t):
 
 t_ignore = ' \t'
 
-
 def t_comments(t):
     r'/\/\.*/'
     t.lexer.lineno += t.value.count('\n')
-
 
 def t_comments_C99(t):
     r'\/[*](.|\n)*?[*]\/'
     t.lexer.lineno += 1
 
-
 def t_error(t):
     print (("Error Lexico: " + str(t.value[0])))
     t.lexer.skip(1)
 
-
-##
-## TODO:test create file with open
-##
 def test(data, lexer):
     lexer.input(data)
     while True:
@@ -311,31 +288,24 @@ def test(data, lexer):
 lexer = lex.lex()
 
 def Analizador_lexico():
-    a = input("direccion: ")
+    a = input("direccion del archivo a ser analizado: ")
     if ( os.path.exists (a)):
         f = open(a)
         data = f.read()
         f.close()
-        #Build lexer and try on
         lexer.input(data)
         test(data, lexer)
     else:
         print ("El archivo no existe")
 
+def Analizador_lexico_consola():
+    linea = input("Ingrese línea de código: ")
+    if ( linea ):
+        lexer.input(linea)
+        test(linea, lexer)
+    else:
+        print ("Ingrese una línea de código javascript")
 
-# Test
-if __name__ == '__main__':
 
-    # Test  ESTO ES SOLO PARA PROBAR EL FUNCINAMIENTO DE ANIZADOR LEXICO.
-    #Cargamos el archivo "c.cpp" que esta en la carpeta ejemplos y lo guardamos
-    #la variable data para despues enviarla al analizador lexico para que la
-    #descomponga en tokes
-
-    f = open('fuente/filee.js')
-    data = f.read()
-    f.close()
-    #Build lexer and try on
-    lexer.input(data)
-    test(data, lexer)
 
 

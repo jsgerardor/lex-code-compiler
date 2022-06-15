@@ -4,3 +4,4 @@ y = 6;
 z = x + y;  
 
 console.log("hola");
+console.log(z);

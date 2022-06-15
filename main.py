@@ -1,22 +1,18 @@
-# -*- enconding: utf-8 -*-
-import os
-from COM.c_lexer import Analizador_lexico
-import ply_build.armar as construir
-
+from js_lexer import Analizador_lexico, Analizador_lexico_consola 
 
 def menu():
     opcion = 0
     while (opcion != 3):
-        # os.system("clear")
         print('''MENU COMPILADOR
-         \t1: Programa Fuente
+         \t1: Línea de código
          \t2: Analizador Lexico
          \t3: Salir''')
         opcion = int(input("opcion: "))
         if opcion == 1:
-            print("Programa Fuente")
-            fuente = input("fuente: ")
-            os.system("nano " + fuente)
+            print("Línea de código")
+            Analizador_lexico_consola()
+            print("\npresione enter para continuar...")
+            input()
         elif opcion == 2:
             print("Analizador Lexico")
             Analizador_lexico()

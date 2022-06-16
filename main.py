@@ -3,7 +3,7 @@ from js_lexer import Analizador_lexico, Analizador_lexico_consola
 def menu():
     opcion = 0
     while (opcion != 3):
-        print('''MENU COMPILADOR
+        print('''MENU ANALIZADOR
          \t1: Línea de código
          \t2: Analizador Lexico
          \t3: Salir''')

@@ -92,7 +92,6 @@ t_LBLOCK = r'{'
 t_RBLOCK = r'}'
 t_QUOTES = r'\"'
 
-
 def t_INCLUDE(t):
     r'include'
     return t
@@ -263,15 +262,11 @@ def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-t_ignore = ' \t'
-
 def t_comments(t):
-    r'/\/\.*/'
+    r'(\/\*(\s*|.*?)*\*\/)|(\/\/.*)'
     t.lexer.lineno += t.value.count('\n')
 
-def t_comments_C99(t):
-    r'\/[*](.|\n)*?[*]\/'
-    t.lexer.lineno += 1
+t_ignore = ' \t'
 
 def t_error(t):
     print (("Error Lexico: " + str(t.value[0])))

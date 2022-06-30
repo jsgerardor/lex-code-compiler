@@ -272,6 +272,8 @@ def t_error(t):
     print (("Error Lexico: " + str(t.value[0])))
     t.lexer.skip(1)
 
+lexer = lex.lex()
+
 def test(data, lexer):
     lexer.input(data)
     while True:
@@ -279,8 +281,6 @@ def test(data, lexer):
         if not tok:
             break
         print (tok)
-
-lexer = lex.lex()
 
 def Analizador_lexico():
     a = input("direccion del archivo a ser analizado: ")

@@ -23,7 +23,13 @@ def menu():
             print("\npresione enter para continuar...")
             input()
         elif opcion == 3:
+            print("Analizador Semantico")
+            #Analizador_lexico()
+            #print("\npresione enter para continuar...")
+            #input()
+        elif opcion == 4:
             print("gracias por usar este programa")
+            break
         else:
             print("ok")
     pass
